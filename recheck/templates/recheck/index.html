@@ -1,0 +1,57 @@
+<html>
+	<head>
+		<title>Demo</title>
+	</head>
+	<body>
+		<p>工单表</p>
+		<table border="1">
+			<tr>
+				<th width="200">工单号</th>
+				<th width="50">审核人</th>
+				<th width="150">数据</th>
+				<th width="100">状态</th>
+				<th width="200">转移来源</th>
+				<th width="200">转移去向</th>
+				<th width="150">转移时间</th>
+				<th width="150">创建时间</th>
+			</tr>
+			{% for workitem in workitems %}
+			<tr>
+				<td><a href="/recheck/{{ workitem.id }}/">{{ workitem.id }}</a></td>
+				<td>{{ workitem.owner }}</td>
+				<td>{{ workitem.my_data }}</td>
+				<td>{{ workitem.status }}</td>
+				<td>{{ workitem.transfer_from }}</td>
+				<td>{{ workitem.transfer_to }}</td>
+				<td>{{ workitem.transfer_time|date:"Y-m-d H:i" }}</td>
+				<td>{{ workitem.create_time|date:"Y-m-d H:i" }}</td>
+			</tr>
+			{% endfor %}
+		</table>
+		<p>历史工单表</p>
+		<table border="1">
+			<tr>
+				<th width="200">工单号</th>
+				<th width="50">审核人</th>
+				<th width="150">数据</th>
+				<th width="100">状态</th>
+				<th width="200">转移来源</th>
+				<th width="200">转移去向</th>
+				<th width="150">转移时间</th>
+				<th width="150">创建时间</th>
+			</tr>
+			{% for workitem in histories %}
+			<tr>
+				<td>{{ workitem.id }}</td>
+				<td>{{ workitem.owner }}</td>
+				<td>{{ workitem.my_data }}</td>
+				<td>{{ workitem.status }}</td>
+				<td>{{ workitem.transfer_from }}</td>
+				<td>{{ workitem.transfer_to }}</td>
+				<td>{{ workitem.transfer_time|date:"Y-m-d H:i" }}</td>
+				<td>{{ workitem.create_time|date:"Y-m-d H:i" }}</td>
+			</tr>
+			{% endfor %}
+		</table>
+	</body>
+</html>
